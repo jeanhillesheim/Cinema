@@ -1,4 +1,4 @@
-package cinema.t3.ine5612.cinema.DB;
+package cinema.t3.ine5612.cinema.model.DB;
 
 import java.util.List;
 

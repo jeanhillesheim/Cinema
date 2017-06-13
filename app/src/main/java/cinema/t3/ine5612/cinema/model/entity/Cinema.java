@@ -22,12 +22,14 @@ public class Cinema {
     public Cinema() {
     }
 
-    public Cinema(long id, String nome, long longitude, long latitude, Collection<Sala> salas) {
+    public Cinema(long id, String nome, long longitude, long latitude, Collection<Filme> filmes, Collection<Sala> salas, Collection<Sessao> sessoes) {
         this.id = id;
         this.nome = nome;
         this.longitude = longitude;
         this.latitude = latitude;
+        this.filmes = filmes;
         this.salas = salas;
+        this.sessoes = sessoes;
     }
 
     public long getId() {

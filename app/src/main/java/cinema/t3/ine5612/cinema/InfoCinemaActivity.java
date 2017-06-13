@@ -5,18 +5,11 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
-import java.util.ArrayList;
 import java.util.List;
 
-import cinema.t3.ine5612.cinema.DB.DB;
+import cinema.t3.ine5612.cinema.model.DB.DB;
 import cinema.t3.ine5612.cinema.model.entity.Cinema;
+import cinema.t3.ine5612.cinema.model.entity.Filme;
 
 public class InfoCinemaActivity extends AppCompatActivity {
 
@@ -24,19 +17,11 @@ public class InfoCinemaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_cinema);
-
         Bundle b = getIntent().getExtras();
         ListView listView = (ListView) findViewById(R.id.lista_filmes);
         Cinema cinema = DB.getInstance().getCinemas().get(b.getInt("ID_CINEMA"));
-        List<Cinema> c = new ArrayList<>();
-        c.add(cinema);
-//        List<String> filmes = new ArrayList<>();
-//        filmes.add("teyegfdjn,dmg");
-//        filmes.add("teyegfdjn,dmg");
-//        filmes.add("teyegfdjn,dmg");
-//        filmes.add("teyegfdjn,dmg");
-//        filmes.add("teyegfdjn,dmg");
-        ArrayAdapter<Cinema> adapter = new ArrayAdapter<Cinema>(this, android.R.layout.simple_list_item_1, c);
+        List<Filme> filmes = (List) cinema.getFilmes();
+        ArrayAdapter<Filme> adapter = new ArrayAdapter<Filme>(this, android.R.layout.simple_list_item_1, filmes);
         listView.setAdapter(adapter);
 
 
