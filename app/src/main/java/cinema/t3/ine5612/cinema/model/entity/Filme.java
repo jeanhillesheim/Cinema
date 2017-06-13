@@ -18,12 +18,14 @@ public class Filme {
 
     private Poster poster;
 
+    private String trailer;
+
     private Boolean favorito;
 
     public Filme() {
     }
 
-    public Filme(Integer id, String nome, Pessoa diretor, Collection<Pessoa> elenco, String sinopse, Integer duracaoMin, Poster poster, Boolean favorito) {
+    public Filme(Integer id, String nome, Pessoa diretor, Collection<Pessoa> elenco, String sinopse, Integer duracaoMin, Poster poster, String trailer, Boolean favorito) {
         this.id = id;
         this.nome = nome;
         this.diretor = diretor;
@@ -31,6 +33,7 @@ public class Filme {
         this.sinopse = sinopse;
         this.duracaoMin = duracaoMin;
         this.poster = poster;
+        this.trailer = trailer;
         this.favorito = favorito;
     }
 
@@ -88,6 +91,14 @@ public class Filme {
 
     public void setPoster(Poster poster) {
         this.poster = poster;
+    }
+
+    public void setTrailer(String trailer) {
+        this.trailer = trailer;
+    }
+
+    public String getTrailer() {
+        return this.trailer;
     }
 
     public Boolean getFavorito() {
