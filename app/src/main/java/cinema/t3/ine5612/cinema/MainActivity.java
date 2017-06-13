@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,6 +22,7 @@ import cinema.t3.ine5612.cinema.model.entity.Filme;
 import cinema.t3.ine5612.cinema.model.entity.Sala;
 import cinema.t3.ine5612.cinema.model.entity.Tela;
 import cinema.t3.ine5612.cinema.model.entity.TipoDeTela;
+import cinema.t3.ine5612.cinema.model.entity.Cinema;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        carregarDados();
         try {
             URL url = new URL("https://image.slidesharecdn.com/histriadocinemaportugues-130624132214-phpapp01/95/histria-do-cinema-portugues-2-638.jpg?cb=1372080520");
             Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
@@ -55,44 +56,5 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(getApplicationContext(), InfoCinemaActivity.class);
         i.putExtras(b);
         startActivity(i);
-    }
-
-    private void carregarDados() {
-        List<Sala> salas = new ArrayList<Sala>();
-        salas.add(new Sala(1, 80, new Tela(700, TipoDeTela.TELA_FULL_HD)));
-        salas.add(new Sala(2, 100, new Tela(800, TipoDeTela.TELA_HD)));
-        salas.add(new Sala(3, 98, new Tela(800, TipoDeTela.TELA_FULL_HD)));
-        salas.add(new Sala(4, 149, new Tela(1000, TipoDeTela.ULTRA_HD)));
-
-        List<Cinema> cinemas = new ArrayList<Cinema>();
-        cinemas.add(new Cinema(
-                1L,
-                "Cinespaço Beira-Mar",
-                11122232L,
-                44L,
-                new ArrayList<Filme>(3),
-                salas,
-                null
-        ));
-        cinemas.add(new Cinema(
-                2L,
-                "CInesystem Iguatemi",
-                11122232L,
-                44L,
-                new ArrayList<Filme>(5),
-                salas,
-                null
-        ));
-        cinemas.add(new Cinema(
-                3L,
-                "Cinemark Floripa Shopping",
-                11122232L,
-                44L,
-                new ArrayList<Filme>(6),
-                salas,
-                null
-        ));
-
-        DB.getInstance().setCinemas(cinemas);
     }
 }
