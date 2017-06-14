@@ -1,8 +1,9 @@
 package cinema.t3.ine5612.cinema.model.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Sessao {
+public class Sessao implements Serializable {
 
     private Cinema cinema;
 

@@ -1,8 +1,9 @@
 package cinema.t3.ine5612.cinema.model.entity;
 
+import java.io.Serializable;
 import java.util.Collection;
 
-public class Filme {
+public class Filme implements Serializable {
 
     private Integer id;
 
@@ -111,15 +112,6 @@ public class Filme {
 
     @Override
     public String toString() {
-        return "Filme{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", diretor=" + diretor +
-                ", elenco=" + elenco +
-                ", sinopse='" + sinopse + '\'' +
-                ", duracaoMin=" + duracaoMin +
-                ", poster=" + poster +
-                ", favorito=" + favorito +
-                '}';
+        return getNome();
     }
 }

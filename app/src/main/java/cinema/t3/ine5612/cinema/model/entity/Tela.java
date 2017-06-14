@@ -1,6 +1,8 @@
 package cinema.t3.ine5612.cinema.model.entity;
 
-public class Tela {
+import java.io.Serializable;
+
+public class Tela implements Serializable {
 
     private Integer tamanhoPolegadas;
 

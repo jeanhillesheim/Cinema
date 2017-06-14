@@ -4,34 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginEnd="15dp"
-    android:layout_marginRight="15dp"
     app:layout_constraintRight_toRightOf="parent"
     tools:context="cinema.t3.ine5612.cinema.MainActivity"
     tools:layout_editor_absoluteY="8dp">
 
-        <ImageView
-            android:id="@+id/imagem_background"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:scaleType="centerCrop" />
+    <ImageView
+        android:id="@+id/imagem_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:visibility="visible"
+        android:layout_centerVertical="true" />
 
-        <ListView
-            android:id="@+id/lista_cinemas"
-            style="@style/Widget.AppCompat.ListView.Menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:background="@android:color/holo_blue_light"
-            android:divider="@android:color/background_light"
-            android:dividerHeight="20dp"
-            android:headerDividersEnabled="true"
-            android:textAlignment="center"
-            android:visibility="visible" />
+    <ListView
+        android:id="@+id/lista_cinemas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/holo_blue_light"
+        android:divider="@android:color/white"
+        android:dividerHeight="20dp"
+        android:textAlignment="center"
+        android:visibility="visible" />
+
 </RelativeLayout>

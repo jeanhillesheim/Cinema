@@ -1,9 +1,20 @@
 package cinema.t3.ine5612.cinema;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.List;
 
@@ -11,7 +22,11 @@ import cinema.t3.ine5612.cinema.model.DB.DB;
 import cinema.t3.ine5612.cinema.model.entity.Cinema;
 import cinema.t3.ine5612.cinema.model.entity.Filme;
 
-public class InfoCinemaActivity extends AppCompatActivity {
+public class InfoCinemaActivity extends FragmentActivity implements OnMapReadyCallback {
+
+    private Cinema cinema;
+
+    public static ArrayAdapter<Filme> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,29 +34,51 @@ public class InfoCinemaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info_cinema);
         Bundle b = getIntent().getExtras();
         ListView listView = (ListView) findViewById(R.id.lista_filmes);
-        Cinema cinema = DB.getInstance().getCinemas().get(b.getInt("ID_CINEMA"));
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                abrirDetalhesFilme(position);
+            }
+        });
+
+
+        cinema = DB.getInstance().getCinemas().get(b.getInt("ID_CINEMA"));
         List<Filme> filmes = (List) cinema.getFilmes();
-        ArrayAdapter<Filme> adapter = new ArrayAdapter<Filme>(this, android.R.layout.simple_list_item_1, filmes);
+        adapter = new ArrayAdapter<Filme>(this, android.R.layout.simple_list_item_1, filmes);
         listView.setAdapter(adapter);
-
-
-
-
-//        super.onCreate(savedInstanceState);
-//        // Get the SupportMapFragment and request notification
-//        // when the map is ready to be used.
-//        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-//                .findFragmentById(R.id.map);
-//        mapFragment.getMapAsync(this);
+        MapFragment mapFragment = (MapFragment) getFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
     }
 
-//    @Override
-//    public void onMapReady(GoogleMap googleMap) {
-//        // Add a marker in Sydney, Australia,
-//        // and move the map's camera to the same location.
-//        LatLng sydney = new LatLng(-33.852, 151.211);
-//        googleMap.addMarker(new MarkerOptions().position(sydney)
-//                .title("Marker in Sydney"));
-//        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    private void abrirDetalhesFilme(int id) {
+        Bundle b = new Bundle();
+        b.putInt("ID_FILME", id);
+        Intent i = new Intent(getApplicationContext(), DetalheFilmeActivity.class);
+        i.putExtra("CINEMA", cinema);
+        i.putExtras(b);
+        startActivity(i);
+    }
+
+//    public void listarFavoritos(View view) {
+//        List<Filme> filmes = (List<Filme>) cinema.getFilmes();
+//        for (Filme f : filmes) {
+//            if (!f.getFavorito()) {
+//                filmes.remove(f);
+//            }
+//        }
+//        adapter.clear();
+//        adapter.addAll(filmes);
+//        adapter.notifyDataSetChanged();
 //    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
+        LatLng local = new LatLng(cinema.getLatitude(), cinema.getLongitude());
+        googleMap.addMarker(new MarkerOptions().position(local)
+                .title(cinema.getNome()));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(local));
+    }
 }

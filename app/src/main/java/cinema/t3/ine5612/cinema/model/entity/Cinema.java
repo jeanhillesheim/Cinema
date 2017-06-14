@@ -1,17 +1,18 @@
 package cinema.t3.ine5612.cinema.model.entity;
 
 
+import java.io.Serializable;
 import java.util.Collection;
 
-public class Cinema {
+public class Cinema implements Serializable {
 
     private long id;
 
     private String nome;
 
-    private long longitude;
+    private double longitude;
 
-    private long latitude;
+    private double latitude;
 
     private Collection<Filme> filmes;
 
@@ -22,7 +23,7 @@ public class Cinema {
     public Cinema() {
     }
 
-    public Cinema(long id, String nome, long longitude, long latitude, Collection<Filme> filmes, Collection<Sala> salas, Collection<Sessao> sessoes) {
+    public Cinema(long id, String nome, double latitude, double longitude, Collection<Filme> filmes, Collection<Sala> salas, Collection<Sessao> sessoes) {
         this.id = id;
         this.nome = nome;
         this.longitude = longitude;
@@ -48,19 +49,19 @@ public class Cinema {
         this.nome = nome;
     }
 
-    public long getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(long longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
-    public long getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(long latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 

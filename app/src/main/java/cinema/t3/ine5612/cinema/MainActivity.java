@@ -3,6 +3,7 @@ package cinema.t3.ine5612.cinema;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,18 +28,36 @@ import cinema.t3.ine5612.cinema.model.entity.Cinema;
 
 public class MainActivity extends AppCompatActivity {
 
+//    private Bitmap bmp;
+
+//    private final String IMAGE_URL = "http://cultura.culturamix.com/blog/wp-content/gallery/Os-Principais-Gêneros-do-Cinema-3/Gêneros-do-Cinema-6.jpg";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        try {
-            URL url = new URL("https://image.slidesharecdn.com/histriadocinemaportugues-130624132214-phpapp01/95/histria-do-cinema-portugues-2-638.jpg?cb=1372080520");
-            Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-            ImageView imageView = (ImageView) findViewById(R.id.imagem_background);
-            imageView.setImageBitmap(bmp);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//            final ImageView imageView = (ImageView) findViewById(R.id.imagem_background);
+//
+//            new AsyncTask<Void, Void, Void>() {
+//                @Override
+//                protected Void doInBackground(Void... params) {
+//                    try {
+//                        InputStream in = new URL(IMAGE_URL).openStream();
+//                        bmp = BitmapFactory.decodeStream(in);
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//                    return null;
+//                }
+//
+//                @Override
+//                protected void onPostExecute(Void result) {
+//                    if (bmp != null)
+//                        imageView.setImageBitmap(bmp);
+//                }
+//
+//            }.execute();
+
         ListView listView = (ListView) findViewById(R.id.lista_cinemas);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

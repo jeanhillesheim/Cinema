@@ -9,7 +9,6 @@
     tools:context="cinema.t3.ine5612.cinema.InfoCinemaActivity" />
 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,14 +16,44 @@
     tools:layout_editor_absoluteX="8dp"
     tools:layout_editor_absoluteY="8dp">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp"
+        android:text="Filmes em Cartaz"
+        android:textAlignment="center"
+        android:gravity="right"
+        android:padding="5dp"
+        android:textSize="33dp"
+        android:textColor="@android:color/holo_green_dark" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/holo_green_dark"
+        android:layout_below="@+id/textView" />
+
     <ListView
         android:id="@+id/lista_filmes"
         android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:scrollbars="horizontal|vertical" />
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="17dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="19dp"
-        android:layout_marginStart="19dp" />
+        android:layout_below="@+id/lista_filmes"
+        map:cameraZoom="15" />
+
 </RelativeLayout>

@@ -1,6 +1,8 @@
 package cinema.t3.ine5612.cinema.model.entity;
 
-public class Poster {
+import java.io.Serializable;
+
+public class Poster implements Serializable {
 
     private String url;
 

@@ -1,6 +1,8 @@
 package cinema.t3.ine5612.cinema.model.entity;
 
-public class Sala {
+import java.io.Serializable;
+
+public class Sala implements Serializable {
 
     private Integer numero;
 

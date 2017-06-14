@@ -1,7 +1,9 @@
 package cinema.t3.ine5612.cinema.model.entity;
 
 
-public class Pessoa {
+import java.io.Serializable;
+
+public class Pessoa implements Serializable {
 
     private long id;
 
